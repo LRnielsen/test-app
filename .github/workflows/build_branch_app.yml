@@ -78,6 +78,8 @@ jobs:
 
       - name: Build Test and Package
         id: maven_build
+        env:
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_PAT }}
         run: |
           mvn package -B \
             -Dsha1="${{ needs.build_parameters.outputs.maven_sha1 }}" \
@@ -89,7 +91,7 @@ jobs:
         id: maven_deploy_snapshot
         if: matrix.os == 'ubuntu-latest'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_PAT }}
         run: |
           mvn deploy -B \
             -Dsha1="${{ needs.build_parameters.outputs.maven_sha1 }}" \
