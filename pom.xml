@@ -8,29 +8,6 @@
 	<name>WidgetApp</name>
 	<description>Project to test GitHub Actions for deployment</description>
 
-	<profiles>
-		<profile>
-			<id>github</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<repositories>
-				<repository>
-					<id>central</id>
-					<url>https://repo1.maven.org/maven2</url>
-				</repository>
-				<repository>
-					<id>github</id>
-					<url>https://maven.pkg.github.com/LRnielsen/*</url>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
-		</profile>
-	</profiles>
-
-
 	<build>
 		<plugins>
 			<plugin>
@@ -85,7 +62,7 @@
 		<dependency>
 			<groupId>com.mycloud</groupId>
 			<artifactId>widget</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<version>0.1-SNAPSHOT</version> 
 		</dependency>
 	</dependencies>
 </project>

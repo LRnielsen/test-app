@@ -60,7 +60,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
-          java-package: jdk
+          distribution: 'adopt'
 
       # Utilize caching of the resolved plugins and dependencies from previous Maven builds to provide
       # faster builds when dependencies have not changed.
