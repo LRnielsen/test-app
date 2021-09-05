@@ -8,6 +8,20 @@
 	<name>WidgetApp</name>
 	<description>Project to test GitHub Actions for deployment</description>
 
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mycloud</groupId>
+			<artifactId>widget</artifactId>
+			<version>0.1-SNAPSHOT</version> 
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -52,17 +66,27 @@
 		</repository>
 	</distributionManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.mycloud</groupId>
-			<artifactId>widget</artifactId>
-			<version>0.1-SNAPSHOT</version> 
-		</dependency>
-	</dependencies>
+	
+
+	<profiles>
+		<profile>
+			<id>github</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<repositories>				
+				<repository>
+					<id>github</id>
+					<url>https://maven.pkg.github.com/LRnielsen/*</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>central</id>
+					<url>https://repo1.maven.org/maven2</url>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
 </project>
