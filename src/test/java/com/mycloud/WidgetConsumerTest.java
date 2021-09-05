@@ -11,7 +11,7 @@ import org.junit.Test;
 /**
  * Unit tests of {@link Widget} class
  */
-public class WidgetTest {
+public class WidgetConsumerTest {
 
 	/**
 	 * Test default enable state of {@link Widget}
