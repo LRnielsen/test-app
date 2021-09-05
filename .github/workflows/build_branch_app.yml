@@ -39,7 +39,7 @@ jobs:
 
 
   build:
-    name: Build, Test, Package and Deploy snapshot lib version
+    name: Build, Test, Package and Deploy snapshot app version
 
     needs:
       - build_parameters
@@ -98,5 +98,53 @@ jobs:
             -Dchangelist="${{ needs.build_parameters.outputs.maven_changelist }}" \
             -Dgithub.repository="${GITHUB_REPOSITORY}" 
         shell: bash
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: app-with-dependencies
+          path: target/*-jar-with-dependencies.jar
+  
+  deploy-container:
+    name: Create & Deploy container with app
+    needs:
+      - build_parameters
+      - build
 
-    
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu-latest']
+        java: [ '11' ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: app-with-dependencies
+      
+      - name: Sign in to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.PACKAGES_PAT }}
+          registry: ghcr.io
+
+      - name: debug
+        run: |
+          ls -las
+
+      # - name: Publish Container image
+      #   id: container_publish
+      #   run: |
+      #     docker push ${{ steps.maven_build.outputs.container_registry }}/${{ steps.maven_build.outputs.container_image }}:${{ steps.maven_build.outputs.container_version }}
+
+      # - name: Publish App Container as a Status
+      #   id: container_image_status
+      #   uses: Sibz/github-status-action@v1
+      #   with:
+      #     authToken: ${{ secrets.GITHUB_TOKEN }}
+      #     state: success
+      #     context: Container Image Published - App
+      #     description: ${{ steps.maven_build.outputs.container_image }}:${{ steps.maven_build.outputs.container_version }}

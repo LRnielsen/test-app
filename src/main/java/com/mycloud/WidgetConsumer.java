@@ -33,4 +33,10 @@ public class WidgetConsumer {
 		this.widget.setEnabled(enabled);
 		return this;
 	}
+
+	public static void main(String[] args) {
+		WidgetConsumer wc = new WidgetConsumer();
+		wc.setEnabled(false);
+		System.out.println("is enabled: " + wc.isEnabled());
+	}
 }
