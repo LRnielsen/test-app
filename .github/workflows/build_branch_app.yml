@@ -112,7 +112,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.PACKAGES_PAT }}
           registry: ghcr.io
-      
+
+      - name: debug
+        run: |
+          ls -las
+
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -120,9 +124,7 @@ jobs:
           push: true
           tags: "ghcr.io/${{ steps.maven_build.outputs.container_image_name }}:${{ steps.maven_build.outputs.container_version }}"
 
-      - name: debug
-        run: |
-          ls -las
+
       
       
 
