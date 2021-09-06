@@ -126,6 +126,7 @@ jobs:
           build-args: |
             MAIN_JAR=${{ steps.maven_build.outputs.build_output_file }}
             MAIN_CLASS=${{ steps.maven_build.outputs.build_main_class  }}
+            MAIN_JAR_TYPE=${{ steps.maven_build.outputs.build_output_type  }}
 
       
       

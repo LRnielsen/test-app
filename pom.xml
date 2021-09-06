@@ -92,7 +92,8 @@
 								::set-output name=container_version::${project.version}
 								::set-output name=container_image_name::${project.groupId}/${project.artifactId}
 								::set-output name=build_output_file::${project.build.finalName}
-								::set-output name=build_main_class::${main.class} 
+								::set-output name=build_main_class::${main.class}
+								::set-output name=build_output_type::${project.packaging}
 							</message>
 						</configuration>
 					</execution>
