@@ -20,6 +20,7 @@
 		<java.version>11</java.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
+		<main.class>com.mycloud.Application</main.class>
 	</properties>
 
 	<dependencies>
@@ -90,6 +91,8 @@
 							<message>Exporting Outputs for GitHub Actions
 								::set-output name=container_version::${project.version}
 								::set-output name=container_image_name::${project.groupId}/${project.artifactId}
+								::set-output name=build_output_file::${project.build.finalName}
+								::set-output name=build_main_class::${main.class} 
 							</message>
 						</configuration>
 					</execution>
