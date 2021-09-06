@@ -9,7 +9,7 @@ ENV MAIN_CLASS $MAIN_CLASS
 EXPOSE 8080
 RUN addgroup --system java && adduser --system java && adduser java java
 USER java:java
-COPY target/$MAIN_JAR.$MAIN_JAR_TYPE .
+COPY ./target/$MAIN_JAR.$MAIN_JAR_TYPE .
 
 
 ENTRYPOINT [ "sh", "-c", "java -jar $MAIN_JAR.$MAIN_JAR_TYPE $MAIN_CLASS" ]

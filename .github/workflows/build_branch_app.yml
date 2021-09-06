@@ -115,7 +115,7 @@ jobs:
 
       - name: debug
         run: |
-          ls -las
+          ls -lasR
 
       - name: Build and push
         id: docker_build
