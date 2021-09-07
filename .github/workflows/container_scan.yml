@@ -77,8 +77,12 @@ jobs:
         container: ${{ fromJSON(needs.get_containers.outputs.containers) }}
 
     steps:      
-      - name: Read Docker Image Onwer
-        run: echo ::set-env name=IMAGE_REPOSITORY_OWNER::$(echo ghcr.io/${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')
+
+      - name: set lower case owner name
+        run: |
+          echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+        env:
+          OWNER: '${{ github.repository_owner }}'
 
       - name: Sign in to GitHub Container Registry
         uses: docker/login-action@v1
@@ -89,12 +93,12 @@ jobs:
 
       - name: Fetch Container Image
         run: |
-          docker pull ${{ env.IMAGE_REPOSITORY_OWNER }}/${{ matrix.container }}
+          docker pull ghcr.io/${{ env.OWNER_LC }}/${{ matrix.container }}
 
       - name: Scan Container Image
         uses: anchore/scan-action@v2
         with:
-          image: ${{ env.IMAGE_REPOSITORY_OWNER }}/${{ matrix.container }}
+          image: ghcr.io/${{ env.OWNER_LC }}/${{ matrix.container }}
           debug: true
           acs-report-enable: true
 
