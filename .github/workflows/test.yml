@@ -5,8 +5,8 @@ on:
     workflows: [ xyz ]    
     types: 
       - requested
-    branches-ignore:
-      - main
+    branches:
+      - feature/run
 
 jobs:
   test_this:
