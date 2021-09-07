@@ -2,8 +2,7 @@ name: Container Image Scan
  
 on:
   registry_package:
-    types: 
-      - published
+    
 
 jobs:
   get_containers:
