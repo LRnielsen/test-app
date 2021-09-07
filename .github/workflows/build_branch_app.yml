@@ -1,4 +1,4 @@
-name:  xyz
+name: xyz
  
 #
 # This workflow provides a continuous integration workflow for all branches other than the default branch.
