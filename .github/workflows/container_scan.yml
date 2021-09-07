@@ -5,11 +5,11 @@ on:
 
   # Trigger container scanning on completion of workflows that build a container
   workflow_run:
-    workflows:
-      - "App Build Test and Publish - Branch"
-      - "App Build Test and Publish - Production"
-    types:
-      - completed
+    # workflows:
+    #   - "App Build Test and Publish - Branch"
+    #   - "App Build Test and Publish - Production"
+    # types:
+    #   - completed
 
 jobs:
   test_this:
