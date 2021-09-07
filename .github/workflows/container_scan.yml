@@ -29,6 +29,8 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
+            console.log("context.sha = " + context.sha)
+            console.log("context.head_sha = " + context.head_sha)
             console.log(JSON.stringify(context, null, 2));
 
             const statuses = await github.repos.getCombinedStatusForRef({
