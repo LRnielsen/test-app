@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with: 
+          token: ${{ secret.REPOPACKAGES_PAT }}
 
       - name: Define Build Parameters
         id: build_params
