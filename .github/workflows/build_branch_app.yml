@@ -123,7 +123,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: "ghcr.io/${{ steps.maven_build.outputs.container_image_name }}:${{ steps.maven_build.outputs.container_version }}"
+          tags: "ghcr.io/LRnielsen/${{ steps.maven_build.outputs.container_image_name }}:${{ steps.maven_build.outputs.container_version }}"
           build-args: |
             MAIN_JAR=${{ steps.maven_build.outputs.build_output_file }}
             MAIN_CLASS=${{ steps.maven_build.outputs.build_main_class  }}
