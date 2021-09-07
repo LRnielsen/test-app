@@ -8,8 +8,8 @@ on:
     # workflows:
     #   - "App Build Test and Publish - Branch"
     #   - "App Build Test and Publish - Production"
-    # types:
-    #   - completed
+    types:
+      - completed
 
 jobs:
   test_this:
