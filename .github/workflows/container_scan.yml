@@ -30,7 +30,8 @@ jobs:
         with:
           script: |
             console.log("context.sha = " + context.sha)
-            console.log("context.head_sha = " + context.head_sha)
+            console.log("context.payload_sha = " + context.payload.workflow_run.head_sha)
+            console.log("context.payload_sha2 = " + context.workflow_run.head_sha)
             console.log(JSON.stringify(context, null, 2));
 
             const statuses = await github.repos.getCombinedStatusForRef({
