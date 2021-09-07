@@ -86,12 +86,12 @@ jobs:
 
       - name: Fetch Container Image
         run: |
-          docker pull ghcr.io/lrnielsen/${{ matrix.container }}
+          docker pull ghcr.io/${{ github.repository_owner }}/${{ matrix.container }}
 
       - name: Scan Container Image
         uses: anchore/scan-action@v2
         with:
-          image: ghcr.io/${{ matrix.container }}
+          image: ghcr.io/${{ github.repository_owner }}/${{ matrix.container }}
           debug: true
           acs-report-enable: true
 
