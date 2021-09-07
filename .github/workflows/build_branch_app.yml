@@ -130,7 +130,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         uses: Sibz/github-status-action@v1
         with:
-          authToken: ${{ secrets.GITHUB_TOKEN }}
+          authToken: ${{ secrets.PACKAGES_PAT }}
           state: success
           context: Container Image Published - App
           description: ${{ steps.maven_build.outputs.container_image_name }}:${{ steps.maven_build.outputs.container_version }}
