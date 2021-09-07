@@ -1,22 +1,15 @@
-name: xyz
+name: triggerflow
  
-#
-# This workflow provides a continuous integration workflow for all branches other than the default branch.
-#
-
-
 on:
-  push:    
-    # branches-ignore:
-    #   - main
-        
+  push:  
+
 jobs:
-  test:
+  trigger:
     name: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2        
+        uses: actions/checkout@v2
       - name: test this
         run: echo hello world
   # build_parameters:
