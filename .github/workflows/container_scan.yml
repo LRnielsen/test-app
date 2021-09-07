@@ -31,12 +31,11 @@ jobs:
           script: |
             console.log("context.sha = " + context.sha)
             console.log("context.payload_sha = " + context.payload.workflow_run.head_sha)
-            console.log("context.payload_sha2 = " + context.workflow_run.head_sha)
             console.log(JSON.stringify(context, null, 2));
 
             const statuses = await github.repos.getCombinedStatusForRef({
                 ...context.repo,
-                ref: context.sha
+                ref: context.payload.workflow_run.head_sha
             }).then(status => {
                 if (status.data.statuses) {
                     return status.data.statuses.filter(status => {
