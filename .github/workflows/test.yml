@@ -2,11 +2,8 @@ name:  test
  
 on:
   workflow_run:
-    workflows: ["App Build Test and Publish - Branch"]
-    token: ${{ secrets.REPOPACKAGES_PAT }}
-    types:
-      - completed
-      - requested
+    workflows: [ xyz ]    
+    types: [ completed ]
 
 jobs:
   test_this:

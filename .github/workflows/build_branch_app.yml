@@ -1,4 +1,4 @@
-name:  App Build Test and Publish - Branch
+name:  xyz
  
 #
 # This workflow provides a continuous integration workflow for all branches other than the default branch.
@@ -6,10 +6,10 @@ name:  App Build Test and Publish - Branch
 
 
 on:
-  push:
+  push:    
     branches-ignore:
       - main
-
+        
 permissions:
   statuses: write
 
