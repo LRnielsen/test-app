@@ -1,19 +1,17 @@
-name: test
+name: testflow
  
 on:
   workflow_run:
     workflows: [ xyz ]    
     types: 
-      - requested
-    branches:
-      - feature/run
+      - completed
 
 jobs:
-  test_this:
+  test:
     name: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2        
+        uses: actions/checkout@v2
       - name: test
         run: echo test
