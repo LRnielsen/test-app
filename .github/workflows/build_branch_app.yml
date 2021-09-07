@@ -115,7 +115,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           username: ${{ github.actor }}
-          password: ${{ secrets.PACKAGES_PAT }}
+          password: ${{ secrets.REPOPACKAGES_PAT }}
           registry: ghcr.io
 
       - name: Build and push Container
@@ -123,7 +123,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          push: true
+          push: true          
           tags: "ghcr.io/lrnielsen/${{ steps.maven_build.outputs.container_image_name }}:${{ steps.maven_build.outputs.container_version }}"
           build-args: |
             MAIN_JAR=${{ steps.maven_build.outputs.build_output_file }}
@@ -135,7 +135,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         uses: Sibz/github-status-action@v1
         with:
-          authToken: ${{ secrets.GITHUB_TOKEN }}
+          authToken: ${{ secrets.REPOPACKAGES_PAT }}
           state: success
           context: Container Image Published - App
           description: ${{ steps.maven_build.outputs.container_image_name }}:${{ steps.maven_build.outputs.container_version }}
