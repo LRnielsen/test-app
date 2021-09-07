@@ -113,11 +113,7 @@ jobs:
           password: ${{ secrets.PACKAGES_PAT }}
           registry: ghcr.io
 
-      - name: debug
-        run: |
-          ls -lasR
-
-      - name: Build and push
+      - name: Build and push Container
         id: docker_build
         uses: docker/build-push-action@v2
         with:
@@ -128,20 +124,13 @@ jobs:
             MAIN_JAR=${{ steps.maven_build.outputs.build_output_file }}
             MAIN_CLASS=${{ steps.maven_build.outputs.build_main_class  }}
             MAIN_JAR_TYPE=${{ steps.maven_build.outputs.build_output_type  }}
-
       
-      
-
-      # - name: Publish Container image
-      #   id: container_publish
-      #   run: |
-      #     docker push ${{ steps.maven_build.outputs.container_registry }}/${{ steps.maven_build.outputs.container_image }}:${{ steps.maven_build.outputs.container_version }}
-
-      # - name: Publish App Container as a Status
-      #   id: container_image_status
-      #   uses: Sibz/github-status-action@v1
-      #   with:
-      #     authToken: ${{ secrets.GITHUB_TOKEN }}
-      #     state: success
-      #     context: Container Image Published - App
-      #     description: ${{ steps.maven_build.outputs.container_image }}:${{ steps.maven_build.outputs.container_version }}
+      - name: Publish Container as a Status
+        id: container_image_status
+        if: matrix.os == 'ubuntu-latest'
+        uses: Sibz/github-status-action@v1
+        with:
+          authToken: ${{ secrets.GITHUB_TOKEN }}
+          state: success
+          context: Container Image Published - App
+          description: ${{ steps.maven_build.outputs.container_image }}:${{ steps.maven_build.outputs.container_version }}
