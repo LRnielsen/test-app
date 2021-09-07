@@ -1,0 +1,20 @@
+name:  test
+ 
+on:
+  workflow_run:
+    workflows: ["App Build Test and Publish - Branch"]
+    types:
+      - completed
+      - requested
+
+jobs:
+  test_this:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with: 
+          token: ${{ secrets.REPOPACKAGES_PAT }}
+      - name: test
+        run: echo test
