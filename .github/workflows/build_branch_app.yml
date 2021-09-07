@@ -30,7 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with: 
-          token: ${{ secret.REPOPACKAGES_PAT }}
+          token: ${{ secrets.REPOPACKAGES_PAT }}
 
       - name: Define Build Parameters
         id: build_params
