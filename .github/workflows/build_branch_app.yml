@@ -7,8 +7,8 @@ name: xyz
 
 on:
   push:    
-    branches-ignore:
-      - main
+    # branches-ignore:
+    #   - main
         
 jobs:
   test:
