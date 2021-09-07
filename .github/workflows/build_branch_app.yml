@@ -18,6 +18,10 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with: 
+          token: ${{ secrets.REPOPACKAGES_PAT }}
       - name: test this
         run: echo hello world
   # build_parameters:

@@ -1,7 +1,7 @@
 name: Container Image Scan
  
 on:
-  registry_package:
+  # registry_package:
 
   # Trigger container scanning on completion of workflows that build a container
   workflow_run:
@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with: 
+          token: ${{ secrets.REPOPACKAGES_PAT }}
       - name: test
         run: echo test
   # get_containers:
