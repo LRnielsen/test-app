@@ -133,4 +133,4 @@ jobs:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           state: success
           context: Container Image Published - App
-          description: ${{ steps.maven_build.outputs.container_image }}:${{ steps.maven_build.outputs.container_version }}
+          description: ${{ steps.maven_build.outputs.container_image_name }}:${{ steps.maven_build.outputs.container_version }}
