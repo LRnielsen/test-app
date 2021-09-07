@@ -5,6 +5,8 @@ on:
     workflows: [ xyz ]    
     types: [ completed ]
 
+permissions: write-all
+
 jobs:
   test_this:
     name: test
