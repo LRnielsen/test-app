@@ -3,7 +3,7 @@ name:  test
 on:
   workflow_run:
     workflows: [ xyz ]    
-    types: [ completed ]
+    types: [ requested ]
 
 permissions: write-all
 
